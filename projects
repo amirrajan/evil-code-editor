@@ -1,0 +1,6 @@
+;;; -*- lisp-data -*-
+(("/Users/amiralirajan/projects/evil-code-editor/")
+ ("/Users/amiralirajan/projects/evil-code-editor/elpa/evil-terminal-cursor-changer/")
+ ("/Users/amiralirajan/projects/evil-code-editor/elpa/copilot/")
+ ("/Users/amiralirajan/projects/evil-code-editor/elpa/ob-powershell/")
+ ("/Users/amiralirajan/projects/evil-code-editor/elpa/ace-window/"))
