@@ -1,6 +1,5 @@
 ;; editor configuration
-(
-(use-package editorconfig
+((use-package editorconfig
   :ensure t
   :config
 
