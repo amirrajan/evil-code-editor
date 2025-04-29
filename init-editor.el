@@ -97,7 +97,11 @@
             (lambda (node)
               (org-roam-update-node-prop node :last-visited (current-time))))
   (setq org-return-follows-link t)
-  (org-roam-db-autosync-mode))
+  (org-roam-db-autosync-mode)
+  (define-key org-capture-mode-map [remap evil-write] 'org-capture-finalize)
+  (define-key org-capture-mode-map [remap evil-save-and-close]          'org-capture-finalize)
+  (define-key org-capture-mode-map [remap evil-save-modified-and-close] 'org-capture-finalize)
+  (define-key org-capture-mode-map [remap evil-quit]                    'org-capture-kill))
 
 ;; file explorer
 (use-package treemacs
