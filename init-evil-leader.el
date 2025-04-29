@@ -26,13 +26,14 @@
 
   ;; here is how you would wire this function up to a leader key
   (evil-leader/set-key
+    ;; get history for single file
+    "h" '("git history this file/directory" .  magit-log-buffer-file)
+    "." '("goto directory of this file". dired)
     ;; magit status (git status)
-    "s" 'magit-status
+    "s" '("git status" . magit-status)
     ;; find or create note
-    "r" 'org-roam-node-find
-    ;; this will map <leader>h to invoke justin/hello-world
-    "h" 'justin/hello-world
+    "r" '("create or find note" . org-roam-node-find)
     ;; search for file in a new split
-    "m" 'amir/split-and-find
+    "m" '("vsplit and find file" . amir/split-and-find)
     ;; search for file
-    "g" 'projectile-find-file))
+    "g" '("find file" . projectile-find-file)))
