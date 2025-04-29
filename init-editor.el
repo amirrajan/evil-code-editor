@@ -14,6 +14,13 @@
   (setq-default truncate-lines t)
   (setq create-lock-files nil)
 
+  (setq-default indent-tabs-mode nil)
+
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((sql . t)
+     (emacs-lisp . t)))
+
   ;; set your backup directory so your working dir doesn't get polluted with ~ files
   (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
