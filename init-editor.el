@@ -204,6 +204,12 @@
   :ensure t
   :hook (emacs-lisp-mode . prism-mode))
 
+(use-package parinfer-rust-mode
+  :ensure t
+  :hook (emacs-lisp-mode . parinfer-rust-mode)
+  :init
+  (setq parinfer-rust-auto-download t))
+
 (use-package paredit
   :ensure t
   :hook (emacs-lisp-mode . paredit-mode))
