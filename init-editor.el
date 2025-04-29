@@ -21,6 +21,8 @@
    '((sql . t)
      (emacs-lisp . t)))
 
+  (setq org-confirm-babel-evaluate nil)
+
   ;; set your backup directory so your working dir doesn't get polluted with ~ files
   (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
@@ -47,6 +49,16 @@
 
   ;; show trailing whitespace
   (setq show-trailing-whitespace t)
+
+  (setq-default indent-tabs-mode nil)
+
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((sql . t)
+     (emacs-lisp . t)))
+
+  (add-hook 'elisp-mode
+            (lambda (indent-tabs-mode nil)))
 
   ;; remove extrenous info in file explorer
   (add-hook 'dired-mode-hook
