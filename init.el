@@ -1,8 +1,7 @@
 ;; import the package manager
 (require 'package)
 
-(setq warning-minimum-level :error)
-(setq byte-compile-warnings nil)
+(setq package-check-signature nil)
 
 ;; set package sources
 (push '("melpa" . "http://melpa.org/packages/") package-archives)

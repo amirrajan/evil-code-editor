@@ -21,6 +21,7 @@
    '((sql . t)
      (emacs-lisp . t)))
 
+  (add-hook 'emacs-lisp-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
   (setq org-confirm-babel-evaluate nil)
 
   ;; set your backup directory so your working dir doesn't get polluted with ~ files
@@ -219,10 +220,6 @@
 
 ;; some packages to help you with editing lisp
 ;; BuT tHE PaRENtHeSiS!!!
-(use-package lispyville
-  :ensure t
-  :hook (emacs-lisp-mode . lispyville-mode))
-
 (use-package prism
   :ensure t
   :hook (emacs-lisp-mode . prism-mode))
@@ -232,10 +229,6 @@
   :hook (emacs-lisp-mode . parinfer-rust-mode)
   :init
   (setq parinfer-rust-auto-download t))
-
-(use-package paredit
-  :ensure t
-  :hook (emacs-lisp-mode . paredit-mode))
 
 ;; contextual help
 (use-package which-key
