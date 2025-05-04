@@ -70,3 +70,22 @@
          (string-match-p "^\*" (buffer-name))
          (not ( equal bread-crumb (buffer-name))))
       (previous-buffer))))
+
+(defun amir/zoom-buffer ()
+  (interactive)
+  (progn
+    (evil-window-set-width (frame-width))
+    (evil-window-set-height (frame-height))
+    (redraw-display)))
+
+(defun amir/resize-equal ()
+  (interactive)
+  (balance-windows)
+  (redraw-display))
+
+(defun amir/touch ()
+  "Run touch command on current file."
+  (interactive)
+  (when buffer-file-name
+    (shell-command (concat "touch " (shell-quote-argument buffer-file-name)))
+    (clear-visited-file-modtime)))
