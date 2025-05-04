@@ -26,14 +26,12 @@
 
   ;; here is how you would wire this function up to a leader key
   (evil-leader/set-key
-    ;; get history for single file
     "h" '("git history this file/directory" .  magit-log-buffer-file)
     "." '("goto directory of this file". dired)
-    ;; magit status (git status)
     "s" '("git status" . magit-status)
-    ;; find or create note
     "r" '("create or find note" . org-roam-node-find)
-    ;; search for file in a new split
     "m" '("vsplit and find file" . amir/split-and-find)
-    ;; search for file
-    "g" '("find file" . projectile-find-file)))
+    "g" '("find file" . projectile-find-file)
+    "p" '("switch to next buffer" . amir/next-code-buffer)
+    "q" '("switch to previous buffer" . amir/previous-code-buffer)
+    ";" '("switch project" . projectile-switch-project)))

@@ -1,12 +1,24 @@
+(defmacro alias (from to)
+  `(defun ,from ()
+     (interactive)
+     (call-interactively #',to)))
+
+(defmacro foreach (i list &rest body)
+  `(dolist (,i ,list)
+     ,@body))
+
+(defmacro call-i (name)
+  `(call-interactively #',name))
+
 (defun tmux-navigate (direction)
   (let ((cmd (concat "windmove-" direction)))
     (condition-case nil
-  (progn
-    (funcall (read cmd))
-    (when (string= "*Messages*" (buffer-name))
-      (evil-leader-mode 1)))
-(error
- (tmux-command direction)))))
+     (progn
+       (funcall (read cmd))
+       (when (string= "*Messages*" (buffer-name))
+         (evil-leader-mode 1)))
+     (error
+      (tmux-command direction)))))
 
 (defun tmux-command (direction)
   (shell-command-to-string
@@ -38,3 +50,23 @@
     (evil-window-vsplit)
     (dired ".")
     (projectile-find-file)))
+
+(defun amir/next-code-buffer ()
+  (interactive)
+  (let (( bread-crumb (buffer-name)))
+    (next-buffer)
+    (while
+        (and
+         (string-match-p "^\*" (buffer-name))
+         (not ( equal bread-crumb (buffer-name))))
+      (next-buffer))))
+
+(defun amir/previous-code-buffer ()
+  (interactive)
+  (let (( bread-crumb (buffer-name)))
+    (previous-buffer)
+    (while
+        (and
+         (string-match-p "^\*" (buffer-name))
+         (not ( equal bread-crumb (buffer-name))))
+      (previous-buffer))))
