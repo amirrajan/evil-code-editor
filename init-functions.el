@@ -10,6 +10,13 @@
 (defmacro call-i (name)
   `(call-interactively #',name))
 
+(alias df describe-function)
+(alias dm describe-mode)
+(alias ef eval-defun)
+(alias eb eval-buffer)
+(alias er eval-region)
+(alias dk describe-key)
+
 (defun tmux-navigate (direction)
   (let ((cmd (concat "windmove-" direction)))
     (condition-case nil
