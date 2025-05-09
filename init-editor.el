@@ -123,17 +123,6 @@
   (define-key org-capture-mode-map [remap evil-save-modified-and-close] 'org-capture-finalize)
   (define-key org-capture-mode-map [remap evil-quit]                    'org-capture-kill))
 
-;; file explorer
-(use-package treemacs
-  :hook  (emacs-startup . treemacs)
-  :ensure t
-  :config
-  (define-key treemacs-mode-map (kbd "C-h") 'tmux-navigate-left)
-  (define-key treemacs-mode-map (kbd "C-l") 'tmux-navigate-right))
-
-(use-package treemacs-evil :ensure t)
-
-
 ;; file navigation: ido, projectile, flx-ido, ido-vertical-mode, ivy
 (use-package ido
   :defer 2
