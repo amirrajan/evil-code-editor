@@ -150,7 +150,10 @@
   (setq projectile-enable-caching t)
   (setq projectile-sort-order 'recently-active)
   (setq projectile-enable-caching 'persistent)
+  (setq projectile-switch-project-action 'projectile-dired)
+  (setq projectile-sort-order 'recently-active)
   (add-to-list 'projectile-globally-ignored-directories "node_modules")
+  (add-to-list 'projectile-globally-ignored-directories "backups")
   (add-to-list 'projectile-globally-ignored-files "*.png"))
 
 (use-package flx-ido

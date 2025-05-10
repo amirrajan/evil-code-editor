@@ -18,6 +18,7 @@
 (alias dk describe-key)
 (alias dv describe-variable)
 (alias ee eval-expression)
+(alias ic projectile-invalidate-cache)
 
 (defun tmux-navigate (direction)
   (let ((cmd (concat "windmove-" direction)))
