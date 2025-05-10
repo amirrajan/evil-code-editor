@@ -32,6 +32,7 @@
   ;; - `:describe-char`: describes the char under the cursor (in cause you want to change it's color theme)
   ;; - `:describe-key`: after pressing a key you will be provided with the function that was invoked
   ;; - `:describe-mode`: gives you information about all the plugins that are currently loaded for the current file
+  (setq evil-want-C-i-jump nil)
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
   :config
@@ -47,7 +48,7 @@
   (defun minibuffer-keyboard-quit ()
     (interactive)
     (if (and delete-selection-mode transient-mark-mode mark-active)
-	(setq deactivate-mark  t)
+        (setq deactivate-mark  t)
       (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
       (abort-recursive-edit)))
 
@@ -75,26 +76,28 @@
   (define-key evil-motion-state-map (kbd "zr") 'origami-open-node-recursively)
   (define-key evil-motion-state-map (kbd "zm") 'origami-close-node-recursively)
 
+  (define-key evil-visual-state-map (kbd "ESC") 'evil-normal-state)
+
   ;; the following customization allows you to move accross buffer splits and tmux splits
   ;; with ctrl+hjkl
   (when (fboundp 'windmove-default-keybindings)
     (windmove-default-keybindings))
 
   (define-key evil-normal-state-map
-	      (kbd "C-h")
-	      'tmux-navigate-left)
+              (kbd "C-h")
+              'tmux-navigate-left)
 
   (define-key evil-normal-state-map
-	      (kbd "C-j")
-	      'tmux-navigate-down)
+              (kbd "C-j")
+              'tmux-navigate-down)
 
   (define-key evil-normal-state-map
-	      (kbd "C-k")
-	      'tmux-navigate-up)
+              (kbd "C-k")
+              'tmux-navigate-up)
 
   (define-key evil-normal-state-map
-	      (kbd "C-l")
-	      'tmux-navigate-right))
+              (kbd "C-l")
+              'tmux-navigate-right))
 
   ;; change the cursor in terminal based on mode
 (use-package evil-terminal-cursor-changer
@@ -111,5 +114,17 @@
 (use-package evil-collection
   :ensure t
   :after evil
+  :init
+  (setq evil-want-keybinding nil)
   :config
   (evil-collection-init))
+
+(use-package evil-surround
+  :ensure t
+  :config
+  (global-evil-surround-mode 1))
+
+(use-package evil-exchange
+  :ensure t
+  :config
+  (evil-exchange-install))
