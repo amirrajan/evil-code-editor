@@ -1018,6 +1018,7 @@
 
   (define-key ruby-mode-map (kbd "C-c C-c") 'send-to-inf-ruby-dwim))
 
+;; helps with lisp indentation
 (use-package indent-guide
   :ensure t
   :hook (emacs-lisp-mode . (lambda () (indent-guide-mode)))
