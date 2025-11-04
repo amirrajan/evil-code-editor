@@ -1020,6 +1020,7 @@
 
 (use-package indent-guide
   :ensure t
+  :hook (emacs-lisp-mode . (lambda () (indent-guide-mode)))
   :custom
   (indent-guide-char "│"))
 
