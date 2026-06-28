@@ -35,3 +35,48 @@
         version-control t       ; number backups
         vc-make-backup-files t))
 
+;; ================================
+;; BEGIN: make emacs look pretty
+;; ================================
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1))
+
+(use-package nerd-icons
+  :ensure t
+  :custom
+  (nerd-icons-font-family "Symbols Nerd Font Mono"))
+
+(use-package nerd-icons-completion
+  :ensure t
+  :config
+  (nerd-icons-completion-mode))
+
+(use-package nerd-icons-dired
+  :ensure t
+  :init
+  (defvar nerd-icons/pragmata-alist '(("nf-md-image" . "")))
+  (nerd-icons-define-icon pragmata nerd-icons/pragmata-alist nerd-icons-font-family "PragmataPro Mono Liga")
+  (add-to-list 'nerd-icons-extension-icon-alist
+               '("png" nerd-icons-pragmata "nf-md-image" :face nerd-icons-blue))
+  :hook
+  (dired-mode . nerd-icons-dired-mode))
+
+(use-package doom-themes
+  :ensure t
+  :config
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold t ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (load-theme 'doom-one t)
+
+  ;; Enable custom neotree theme (nerd-icons must be installed!)
+  (doom-themes-neotree-config)
+  ;; or for treemacs users
+  (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
+;; ================================
+;; END: make emacs look pretty
+;; ================================
+
